@@ -1,25 +1,20 @@
 {
   "compilerOptions": {
-    // File Layout
     "rootDir": "./src",
     "outDir": "./dist",
 
-    // Environment
     "module": "esnext",
     "target": "esnext",
     "lib": ["esnext"],
     "types": ["node"],
     "moduleResolution": "bundler",
 
-    // Outputs
     "sourceMap": true,
 
-    // Strict checking
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 
-    // Recommended
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,

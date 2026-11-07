@@ -3,7 +3,7 @@ let power: number = 20000;
 let canFly: boolean = true;
 let snacks: string[] = ["popcorn", "chips"];
 
-type Grade = "B" | "C" | "D";
+type Grade = "A" | "B" | "C" | "D";
 
 let g: Grade = "A";
 
@@ -20,7 +20,7 @@ const s1: Student = {
   age: 25,
   name: "Ahanaf",
   roll: 17,
-  className: "Ahanaf",
+  className: "Ten",
 };
 
 type hasName = { name: string };
@@ -36,35 +36,64 @@ const fullS: FullStudent = {
   grade: "B",
 };
 
-type BkashPay = {
-  method: "Bkash";
-  number: number;
-};
-
+type BkashPay = { method: "Bkash"; number: number };
+type NagadPay = { method: "Nagad"; number: number };
 type CardPay = {
   method: "card";
   cardNo: number;
   expDate: string;
-  cvc: string | null | number;
+  cvc: string | number | null;
 };
+type CashPay = { method: "cash" };
 
-type CashPay = {
-  method: "cash";
-};
-
-type NagadPay = {
-  method: "Nagad";
-  number: number;
-};
-
-type Payment = BkashPay | CardPay | CashPay | NagadPay;
+type Payment = BkashPay | NagadPay | CardPay | CashPay;
 
 const pay = (p: Payment): void => {
-  if (p.method === "Bkash") {
-    console.log(`Send to Bkash Number ${p.number}`);
-  }
-
-  if (p.method === "card") {
-    console.log(`Card No: `);
+  switch (p.method) {
+    case "Bkash":
+      console.log(`Send to Bkash Number: ${p.number}`);
+      break;
+    case "Nagad":
+      console.log(`Send to Nagad Number: ${p.number}`);
+      break;
+    case "card":
+      console.log(`Card No: ${p.cardNo}`);
+      break;
+    case "cash":
+      console.log("Payment Done!!!");
+      break;
+    default: {
+      const _exhaustive: never = p;
+      return _exhaustive;
+    }
   }
 };
+
+const greet = (
+  name: string,
+  greeting: string = "Hello",
+  suffix?: string,
+): string => {
+  return `${greeting}, ${name}${suffix ?? ""}`;
+};
+
+console.log(greet("Ahanaf"));
+console.log(greet("Ahanaf", "Hi", "!!!"));
+
+type MathOp = (a: number, b: number) => number;
+
+const calculate = (a: number, b: number, Op: MathOp): number => Op(a, b);
+
+console.log(calculate(5, 3, (x, y) => x + y));
+console.log(calculate(5, 3, (x, y) => x + y));
+
+function format(value: string): string;
+
+function format(value: number): string;
+
+function format(value: string | number): string {
+  return typeof value === "string" ? value.toUpperCase() : value.toFixed(2);
+}
+
+console.log(format("Hello"));
+console.log(format(3.1416));
