@@ -1,11 +1,9 @@
-let heroName: string = "Spider Man";
+let heroName: String = "Spider Man";
 let power: number = 20000;
-let canFly = true;
+let canFly: boolean = true;
 let snacks: string[] = ["popcorn", "chips"];
-// ["popcorn", "chips"]
 
-type Grade = "A" | "B" | "C" | "D";
-// type id = string | number
+type Grade = "B" | "C" | "D";
 
 let g: Grade = "A";
 
@@ -14,15 +12,15 @@ type Student = {
   readonly name: string;
   age: number;
   roll: number;
-  className?: string;
+  className?: String;
 };
 
 const s1: Student = {
   id: 1,
   age: 25,
-  name: "Ruhan",
+  name: "Ahanaf",
   roll: 17,
-  className: "Z",
+  className: "Ahanaf",
 };
 
 type hasName = { name: string };
@@ -38,28 +36,35 @@ const fullS: FullStudent = {
   grade: "B",
 };
 
-type BikashPay = { method: "bikash"; number: number };
-type CardPay = { method: "card"; cardNo: number; expDate: string; cvc: number };
-type CashPay = { method: "cash" };
+type BkashPay = {
+  method: "Bkash";
+  number: number;
+};
 
-type Payment = BikashPay | CardPay | CashPay;
+type CardPay = {
+  method: "card";
+  cardNo: number;
+  expDate: string;
+  cvc: string | null | number;
+};
 
-function pay(p: Payment) {
-  if (p.method === "bikash") {
-    console.log(`Send to bikash Number ${p.number}`);
+type CashPay = {
+  method: "cash";
+};
+
+type NagadPay = {
+  method: "Nagad";
+  number: number;
+};
+
+type Payment = BkashPay | CardPay | CashPay | NagadPay;
+
+const pay = (p: Payment): void => {
+  if (p.method === "Bkash") {
+    console.log(`Send to Bkash Number ${p.number}`);
   }
+
   if (p.method === "card") {
-    console.log(`Card no:${p.cardNo} with ${p.cvc}`);
+    console.log(`Card No: `);
   }
-
-  // console.log("play cash");
-}
-
-function greet(name: string, mood?: string, emoji = "👌") {
-  console.log(`${emoji} ${name} is ${mood ?? "okay"}`);
-}
-
-g = "E";
-s1.name = "X";
-greet("Ahanaf");
-greet("Ahanaf", "happy");
+};
